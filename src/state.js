@@ -89,6 +89,14 @@ export const canBeCalculated = selector({
   },
 });
 
+export const incomingWithDeductions = selector({
+  key: 'incomingWithDeductions',
+  get: ({ get }) => get(incomingPaymentFieldValue)
+    - MONTHLY_RESERVE_AMOUNT
+    - get(americaExpressCreditCardFieldValue)
+    - get(mastercardCreditCardFieldValue),
+});
+
 export const actions = selector({
   key: 'actions',
   get: ({ get }) => {
@@ -96,8 +104,7 @@ export const actions = selector({
     const mc = get(mastercardCreditCardFieldValue);
     const ip = get(incomingPaymentFieldValue);
     const rs = MONTHLY_RESERVE_AMOUNT;
-    const rm = ip - rs - am - mc;
-
+    const rm = get(incomingWithDeductions);
     const ready = get(canBeCalculated);
 
     if (ready) {
@@ -107,7 +114,7 @@ export const actions = selector({
         `Transfer <strong>${monetise(rs)}</strong> from <strong>Current Account</strong> to <strong>Monthly Reserves</strong>`,
         am > 0 ? `Pay off <strong>${monetise(am)}</strong> from <strong>Current Account</strong> to <strong>American Express</strong>` : '',
         mc > 0 ? `Pay off <strong>${monetise(am)}</strong> from <strong>Current Account</strong> to <strong>Mastercard</strong>` : '',
-        rm > 0 ? `Transfer ${monetise(rm)} from <strong>Current Account</strong> to <strong>Savings Account</strong>` : '',
+        rm > 0 ? `Transfer <strong>${monetise(rm)}</strong> from <strong>Current Account</strong> to <strong>Savings Account</strong>` : '',
       ].filter(Boolean);
     }
 

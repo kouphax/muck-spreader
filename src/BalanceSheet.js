@@ -2,8 +2,8 @@ import { useRecoilValue } from 'recoil';
 import PropTypes from 'prop-types';
 import {
   currentAccountBalanceAfter,
-  currentAccountFieldValue,
-  MONTHLY_RESERVE_AMOUNT,
+  currentAccountFieldValue, incomingWithDeductions,
+  MONTHLY_RESERVE_AMOUNT, savingsAccountFieldValue,
 } from './state';
 
 function Money({ value }) {
@@ -25,6 +25,8 @@ Money.propTypes = {
 export default function BalanceSheet() {
   const currentAccountBefore = useRecoilValue(currentAccountFieldValue);
   const currentAccountAfter = useRecoilValue(currentAccountBalanceAfter);
+  const savingsAccountBefore = useRecoilValue(savingsAccountFieldValue);
+  const totalSaved = useRecoilValue(incomingWithDeductions);
 
   return (
     <table>
@@ -49,9 +51,9 @@ export default function BalanceSheet() {
         </tr>
         <tr>
           <th scope="row">Savings Account</th>
-          <td />
-          <td />
-          <td />
+          <td><Money value={savingsAccountBefore} /></td>
+          <td><Money value={savingsAccountBefore + totalSaved} /></td>
+          <td><Money value={totalSaved} /></td>
         </tr>
       </tbody>
     </table>
