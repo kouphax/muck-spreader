@@ -113,7 +113,7 @@ export const actions = selector({
         rm < 0 ? `Transfer <strong>${monetise(Math.abs(rm))}</strong> from <strong>Savings Account</strong> to <strong>Current Account</strong>` : '',
         `Transfer <strong>${monetise(rs)}</strong> from <strong>Current Account</strong> to <strong>Monthly Reserves</strong>`,
         am > 0 ? `Pay off <strong>${monetise(am)}</strong> from <strong>Current Account</strong> to <strong>American Express</strong>` : '',
-        mc > 0 ? `Pay off <strong>${monetise(am)}</strong> from <strong>Current Account</strong> to <strong>Mastercard</strong>` : '',
+        mc > 0 ? `Pay off <strong>${monetise(mc)}</strong> from <strong>Current Account</strong> to <strong>Mastercard</strong>` : '',
         rm > 0 ? `Transfer <strong>${monetise(rm)}</strong> from <strong>Current Account</strong> to <strong>Savings Account</strong>` : '',
       ].filter(Boolean);
     }
