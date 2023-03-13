@@ -24,7 +24,7 @@ function monetise(value) {
   return `${value < 0 ? '-' : ''}£${value.toFixed(2)}`;
 }
 
-export const MONTHLY_RESERVE_AMOUNT = 4000;
+export const MONTHLY_RESERVE_AMOUNT = 4500;
 
 export const currentAccountField = atom({
   key: 'currentAccountField',
