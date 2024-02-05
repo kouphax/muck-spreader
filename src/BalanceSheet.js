@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   currentAccountBalanceAfter,
   currentAccountFieldValue, incomingWithDeductions,
-  MONTHLY_RESERVE_AMOUNT, savingsAccountFieldValue,
+  savingsAccountFieldValue,
 } from './state';
 
 function Money({ value }) {
@@ -42,12 +42,6 @@ export default function BalanceSheet() {
           <td><Money value={currentAccountBefore} /></td>
           <td><Money value={currentAccountAfter} /></td>
           <td><Money value={currentAccountBefore - currentAccountAfter} /></td>
-        </tr>
-        <tr>
-          <th scope="row">Monthly Reserves</th>
-          <td>n/a</td>
-          <td><Money value={MONTHLY_RESERVE_AMOUNT} /></td>
-          <td><Money value={MONTHLY_RESERVE_AMOUNT} /></td>
         </tr>
         <tr>
           <th scope="row">Savings Account</th>

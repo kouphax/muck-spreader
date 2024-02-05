@@ -1,4 +1,4 @@
-import { RecoilState, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import PropTypes from 'prop-types';
 
 export default function InputField({ label, atom }) {
@@ -18,5 +18,5 @@ export default function InputField({ label, atom }) {
 
 InputField.propTypes = {
   label: PropTypes.string.isRequired,
-  atom: PropTypes.instanceOf(RecoilState).isRequired,
+  atom: PropTypes.any.isRequired,
 };
